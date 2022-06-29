@@ -1,0 +1,24 @@
+begin
+
+//IBCC - Instituto Brasileiro de Clonagem Clandestina
+
+string printf( char[] arr );
+
+bool clonar_osvaldo = true;
+int osvaldos = 1;
+
+while(clonar_osvaldo) {
+
+    osvaldos = osvaldos + 1;
+
+    // sou so um comentario porfavor me ignore
+
+    if( osvaldos > 9000 ) {
+        printf("voce clonou muitos osvaldos. porque voce fez isso?");
+        clonar_osvaldo = false;
+    } else {
+        printf("seu osvaldo esta pronto, agora temos %d osvaldos clonados", osvaldos - 1);
+    }
+}
+
+end

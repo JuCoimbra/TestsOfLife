@@ -1,0 +1,32 @@
+demilitadores = set([" ", '(', ')', ',', ':', ';', "'", '{', '}', '"', '[', ']', '=', '/','\n'])
+      
+trans_func = {'identifier': {'isLetra': 'letras', '_': 'this_'},
+               'letras': {'isLetra': 'letras', '_': 'this_', 'isDigit': 'digit'},
+               'digit': {'isLetra': 'letras', '_': 'this_', 'isDigit': 'digit'},
+               'this_': {'isLetra': 'letras', '_': 'this_', 'isDigit': 'digit'}}
+start_state = 'identifier'
+final_states = set(['letras','digit', 'this_'])
+automIdentifier = (trans_func, start_state, final_states)
+
+trans_func = {'decimal': {'isDigit': 'digit'},
+               'digit': {'isDigit': 'digit'}}
+start_state = 'decimal'
+final_states = set(['digit'])
+automDecimal = (trans_func, start_state, final_states)
+
+trans_func = {'Exponent': {'e': 'e'},
+               'e': {'+': 'is+', '-': 'is-', 'isDigit': 1},
+               'is+': {'isDigit': 1},
+               'is-': {'isDigit': 1}}
+start_state = 'Exponent'
+final_states = set(['Null'])
+automExponent = (trans_func, start_state, final_states)
+
+trans_func = {'Float': {'isDigit': 1},
+               'e': {'+': 'is+', '-': 'is-', 'isDigit': 1},
+               'is+': {'isDigit': 1},
+               'is-': {'isDigit': 1}}
+start_state = 'Exponent'
+final_states = set(['Null'])
+automFloat = (trans_func, start_state, final_states)
+
