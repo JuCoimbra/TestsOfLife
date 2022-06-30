@@ -18,35 +18,6 @@ import os
 import sys
 import lexLib as lex
 
-def imprimir_instrucoes():
-    print("\nEste é um Static Checker para linguagem DonkSoup2022-1 criada pelo professor da disciplina Compiladores Osvaldo Melo.")
-    print("Ao executá-lo com um arquivo .dks, irá resultar em uma análise léxica e uma tabela de símbolos do texto fonte.\n")
-    print("\tUso:   py compilar.py ARQUIVO")
-    print("\nObs.\n - Caso o arquivo não se encontre na pasta atual, use o caminho absoluto.")
-    print(" - Não é necessário especificar a extensão do arquivo.")
-    print(" - Para exibir essa mensagem novamente execute o script com a opção -h ou --help.")
-
-# imprimir instrucoes de uso caso o usuario coloque o comando errado
-if len(sys.argv) < 2  or '-h' in sys.argv or '--help' in sys.argv:
-    imprimir_instrucoes()
-    sys.exit()
-
-
-#retorna o conteudo do arquivo em uma string grande
-#se o arquivo nao for encontrado, termina a execução
-def ler_arquivo(path):
-
-    #procurando arquivo no caminho, parece que pro python o caminho nao eh case sensitive
-    if os.path.isfile(path + ".DKS"):
-        with open(path + ".DKS", 'r') as arquivo:
-            conteudo = arquivo.read()
-    else: 
-        print("\n\tERRO - arquivo não encontrado\n")
-        imprimir_instrucoes()
-        sys.exit()
-    
-    return conteudo
-
 # Declaracao de estrutura de um Identifier contem
 # id
 # lexeme
@@ -87,7 +58,7 @@ def main():
 
     path = input('Insira o nome do arquivo, sem extensão. Caso o arquivo esteja em outra pasta, especifique o diretorio:')
     
-    with open(path+'.DKS', 'r') as f:
+    with open(path+'.dks', 'r') as f:
      textofonte = f.readlines()
      for line in textofonte:
 
